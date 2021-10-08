@@ -1,0 +1,20 @@
+{application, flightFilterApp,
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {flightFilterApp_app, []}},
+  {applications,
+   [kernel,
+    eredis_cluster,
+    cowboy,
+    stdlib,
+    jiffy,
+    eredis,
+    poolboy
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.

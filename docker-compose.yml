@@ -1,0 +1,30 @@
+version: "3.2"
+services:
+  app:
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    networks:
+      - flightfilter
+    environment:
+      WAIT_HOSTS: redis:30001
+      WAIT_AFTER: 5
+
+  redis:
+    image: grokzen/redis-cluster:5.0.10
+    volumes:
+      - ./data/redis:/data/redis
+    networks:
+      - flightfilter
+    environment:
+      - INITIAL_PORT=30001
+      - MASTERS=3
+      - SLAVES_PER_MASTER=1
+    command:
+      - /data/redis/docker-entrypoint.sh
+
+networks:
+  flightfilter:
+    driver: bridge
