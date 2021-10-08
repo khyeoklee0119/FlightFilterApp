@@ -8,7 +8,12 @@ Requisite
 * Erlang 23+
 * Rebar3 
 
-Build
+Docker
 -----
 
-    FlightFilterApp$ docker-compose up --build
+    $ docker-compose up --build
+
+Run in Local (Dev)
+----
+    $ ./rebar3 compile
+    $ ./rebar3 shell
